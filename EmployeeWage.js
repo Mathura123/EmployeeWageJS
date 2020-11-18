@@ -20,11 +20,14 @@ function GetWorkHours(empCheck) {
     }
     return workHours;
 }
-
-function GetTotalEmpWage(empHours) {
-    return empHours * WAGE_PER_HOUR*WORKING_DAYS;
+function GetTotalEmpWage() {
+    let empWage = 0;
+    for (let day = 0; day < WORKING_DAYS; day++) {
+        let empCheck = Math.floor(Math.random() * 10) % 3;
+        empWage += GetWorkHours(empCheck) * WAGE_PER_HOUR;
+    }
+    return empWage;
 }
 
-let empCheck = Math.floor(Math.random() * 10) % 3;
-let empWage = GetTotalEmpWage(GetWorkHours(empCheck));
+let empWage = GetTotalEmpWage();
 console.log('Employee Wage is : ' + empWage);
