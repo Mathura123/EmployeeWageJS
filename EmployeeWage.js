@@ -4,6 +4,7 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 const WORKING_DAYS = 20;
+const MAX_WORK_HOURS = 160;
 
 function GetWorkHours(empCheck) {
     let workHours = 0;
@@ -20,14 +21,17 @@ function GetWorkHours(empCheck) {
     }
     return workHours;
 }
-function GetTotalEmpWage() {
-    let empWage = 0;
-    for (let day = 0; day < WORKING_DAYS; day++) {
+
+function GetTotalWorkingHours() {
+    let workHours = 0;
+    for (let day = 0; day < WORKING_DAYS && workHours <= MAX_WORK_HOURS; day++) {
         let empCheck = Math.floor(Math.random() * 10) % 3;
-        empWage += GetWorkHours(empCheck) * WAGE_PER_HOUR;
+        workHours += GetWorkHours(empCheck);
     }
-    return empWage;
+    workHours = Math.min(workHours, MAX_WORK_HOURS);
+    return workHours;
 }
 
-let empWage = GetTotalEmpWage();
-console.log('Employee Wage is : ' + empWage);
+let totalWorkingHours = GetTotalWorkingHours();
+let empWage = totalWorkingHours * WAGE_PER_HOUR;
+console.log('Employee wage is ' + empWage + ' for total working hours ' + totalWorkingHours + ' hrs');
