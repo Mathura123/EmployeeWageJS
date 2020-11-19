@@ -22,16 +22,23 @@ function GetWorkHours(empCheck) {
     return workHours;
 }
 
-function GetTotalWorkingHours() {
-    let workHours = 0;
-    for (let day = 0; day < WORKING_DAYS && workHours <= MAX_WORK_HOURS; day++) {
-        let empCheck = Math.floor(Math.random() * 10) % 3;
-        workHours += GetWorkHours(empCheck);
-    }
-    workHours = Math.min(workHours, MAX_WORK_HOURS);
-    return workHours;
+function CalEmpWage(hrs) {
+    return hrs * WAGE_PER_HOUR;
 }
 
-let totalWorkingHours = GetTotalWorkingHours();
-let empWage = totalWorkingHours * WAGE_PER_HOUR;
-console.log('Employee wage is ' + empWage + ' for total working hours ' + totalWorkingHours + ' hrs');
+let totalWorkHours = 0;
+let dailyWageArr = new Array();
+let totalWorkDays =0;
+for (; totalWorkDays < WORKING_DAYS && totalWorkHours <= MAX_WORK_HOURS; totalWorkDays++) {
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    let workHours = GetWorkHours(empCheck);
+    totalWorkHours += workHours;
+    dailyWageArr.push(CalEmpWage(workHours));
+}
+totalWorkHours = Math.min(totalWorkHours, MAX_WORK_HOURS);
+
+let empWage = CalEmpWage(totalWorkHours)
+console.log("EmpWage array : " + dailyWageArr.toString());
+console.log('Total Working days : '+ totalWorkDays)
+console.log('Total Employee wage : ' + empWage);
+console.log("Total Work hours : "+ totalWorkHours);
