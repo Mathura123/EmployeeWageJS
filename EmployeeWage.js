@@ -65,3 +65,4 @@ console.log("Total Work hours : " + totalWorkHours);
 console.log("Daily Emp Wage using map function : " + MappedDailyWage);
 console.log("Full Wage Days : " + fullWageDays);
 console.log("First occurence of full time wage was Day "+MappedDailyWage.find(function(dailyWage){ return dailyWage.includes("160")}));
+console.log("Does all elements of FullWagedDays array contains full time wage :" +fullWageDays.every(function(dailyWage){ return dailyWage.includes("160")}));
