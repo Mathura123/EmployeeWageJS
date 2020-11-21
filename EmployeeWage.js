@@ -73,3 +73,12 @@ function isAnyPartTimeWage(dailyWage)
 }
 console.log("Is there any part time wage in FullWageDays Array : "+ fullWageDays.some(isAnyPartTimeWage));
 console.log ("Is there any part time wage in MappedDailyWage Array : "+ MappedDailyWage.some(isAnyPartTimeWage));
+
+function FindWorkingDays(numberOfDays, dailyWage)
+{
+    if(dailyWage>0)
+        return (numberOfDays+1);
+    
+    return numberOfDays;
+}
+console.log("Employee Worked for "+EmployeeWage.empDailyWageArray.reduce(FindWorkingDays)+" days");
