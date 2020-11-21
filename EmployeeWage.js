@@ -51,9 +51,14 @@ for (; totalWorkDays < EmployeeWage.MAX_WORK_DAYS && totalWorkHours <= EmployeeW
 }
 
 let empWage = CalEmpWage(totalWorkHours)
-let totalWage =0;
-EmployeeWage.empDailyWageArray.forEach((dailyWage)=>{totalWage += dailyWage});
+let totalWage = 0;
+EmployeeWage.empDailyWageArray.forEach((dailyWage) => {
+    totalWage += dailyWage
+});
+let dayCount = 0;
+let MappedDailyWage = EmployeeWage.empDailyWageArray.map((dailyWage) => ((++dayCount) + "=>" + dailyWage));
 console.log("EmpWage array : " + EmployeeWage.empDailyWageArray.toString());
 console.log('Total Working days : ' + totalWorkDays)
 console.log('Total Employee wage : ' + totalWage);
 console.log("Total Work hours : " + totalWorkHours);
+console.log("Daily Emp Wage using map function : " + MappedDailyWage);
