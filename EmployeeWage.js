@@ -15,6 +15,7 @@ let EmployeeWage = {
     MAX_WORK_HRS: 160,
     MAX_WORK_DAYS: 20,
     empDailyWageArray: new Array(),
+    TotalWageDailyWageMap : new Map()
 };
 
 function GetWorkHours(empCheck) {
@@ -38,7 +39,7 @@ function CalEmpWage(hrs) {
 }
 
 let totalWorkHours = 0;
-let totalWorkDays = 0;
+let totalWorkDays = 1;
 for (; totalWorkDays < EmployeeWage.MAX_WORK_DAYS && totalWorkHours <= EmployeeWage.MAX_WORK_HRS; totalWorkDays++) {
     let empCheck = Math.floor(Math.random() * 10) % 3;
     let workHours = GetWorkHours(empCheck);
@@ -48,6 +49,7 @@ for (; totalWorkDays < EmployeeWage.MAX_WORK_DAYS && totalWorkHours <= EmployeeW
         totalWorkHours = EmployeeWage.MAX_WORK_HRS;
     }
     EmployeeWage.empDailyWageArray.push(CalEmpWage(workHours));
+    EmployeeWage.TotalWageDailyWageMap.set(totalWorkDays, CalEmpWage(workHours));
 }
 
 let empWage = CalEmpWage(totalWorkHours)
@@ -82,3 +84,6 @@ function FindWorkingDays(numberOfDays, dailyWage)
     return numberOfDays;
 }
 console.log("Employee Worked for "+EmployeeWage.empDailyWageArray.reduce(FindWorkingDays)+" days");
+console.log(EmployeeWage.TotalWageDailyWageMap);
+//Computing total wage using map
+console.log("Total wage of Employee is : "+ Array.from(EmployeeWage.TotalWageDailyWageMap.values()).reduce(function(totalWage, dailyWage){ return totalWage+dailyWage},0));
