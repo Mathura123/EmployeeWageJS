@@ -56,7 +56,7 @@ EmployeeWage.empDailyWageArray.forEach((dailyWage) => {
     totalWage += dailyWage
 });
 let dayCount = 0;
-let MappedDailyWage = EmployeeWage.empDailyWageArray.map((dailyWage) => ((++dayCount) + " = " + dailyWage));
+let MappedDailyWage = EmployeeWage.empDailyWageArray.map((dailyWage) => ((++dayCount) + "=>" + dailyWage));
 let fullWageDays= MappedDailyWage.filter((dailyWage)=>{ return dailyWage.includes('160')});
 console.log("EmpWage array : " + EmployeeWage.empDailyWageArray.toString());
 console.log('Total Working days : ' + totalWorkDays)
@@ -64,3 +64,4 @@ console.log('Total Employee wage : ' + totalWage);
 console.log("Total Work hours : " + totalWorkHours);
 console.log("Daily Emp Wage using map function : " + MappedDailyWage);
 console.log("Full Wage Days : " + fullWageDays);
+console.log("First occurence of full time wage was Day "+MappedDailyWage.find(function(dailyWage){ return dailyWage.includes("160")}));
