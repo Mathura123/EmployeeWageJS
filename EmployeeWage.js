@@ -163,4 +163,5 @@ console.log(" UC 11C- PartWorkingDaysStrings: " + partWorkDaysStrArr);
 //UC 11D
 let noWorkDaysNumArr = empDailyHrsAndWageArr.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 0)
                          .map(dailyHrsAndWage => dailyHrsAndWage.dayNum);
+                         
 console.log("UC 11D- NoWorkingDaysNumber: " + noWorkDaysNumArr);
